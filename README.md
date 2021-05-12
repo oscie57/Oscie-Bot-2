@@ -1,2 +1,2 @@
 # OscieBot-2
-jg made me make it
+jg made me make it lol
