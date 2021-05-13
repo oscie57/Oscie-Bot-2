@@ -153,6 +153,7 @@ async def _test(ctx: SlashContext):
     embed = discord.Embed(color=0x7289DA, title="embed slash", title_url="https://oscie.tk/")
     embed.add_field(name="lol name", value="pfft", inline=False)
 
+
 @bot.command(name='help')
 async def general_help(ctx):
     """Testing"""
@@ -194,19 +195,27 @@ async def invite(ctx):
     invite_link = f'https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=bot&permissions={permission}'
     print(f'({current_dt}) {ctx.guild} | Invite Link sent - {ctx.author}')
     await ctx.send(invite_link)
+
+
 @info.command()
 async def site(ctx):
     """Info for the bot"""
     await ctx.send('https://oscie.tk/bot')
+
+
 @info.command()
 @commands.check(is_it_me)
 async def test(ctx):
     """Testing Command"""
+
+
 @info.command()
 @commands.check(is_it_me)
 async def getupdate(ctx):
     """Get update"""
     await ctx.send('```diff\n+Update DATE - Oscie Bot 2\n-------------------------\n-Thing One\n-Thing Two```')
+
+
 @info.command()
 async def issue(ctx):
     await ctx.send(
@@ -785,6 +794,8 @@ async def shutdown(ctx):
 @bot.group(invoke_without_command=True)
 async def confess(ctx):
     await ctx.channel.purge(limit=1)
+
+
 @confess.command()
 async def bot_help(ctx):
     await ctx.channel.purge(limit=1)
@@ -826,6 +837,8 @@ async def bot_help(ctx):
         inline=False
     )
     await ctx.channel.send(embed=embed)
+
+
 @confess.command()
 async def major(ctx, *args):
     """    A major confession, that you really need advice on. Use this to respond to advice or start a chain."""
@@ -835,6 +848,8 @@ async def major(ctx, *args):
     embed.add_field(name="Confession", value=(" ".join(args)))
     embed.add_field(name="Urgency", value="**Major**")
     await ctx.channel.send(embed=embed)
+
+
 @confess.command()
 async def minor(ctx, *args):
     """A minor confession, that you would like advice on, but not that important.
@@ -847,6 +862,8 @@ async def minor(ctx, *args):
     embed.add_field(name="Confession", value=(" ".join(args)))
     embed.add_field(name="Urgency", value="Minor")
     await ctx.channel.send(embed=embed)
+
+
 @confess.command()
 async def neutral(ctx, *args):
     """A neutral confession, that you may or may not want/need advice on.
@@ -859,6 +876,8 @@ async def neutral(ctx, *args):
     embed.add_field(name="Confession", value=(" ".join(args)))
     embed.add_field(name="Urgency", value="Neutral")
     await ctx.channel.send(embed=embed)
+
+
 @confess.command()
 async def support(ctx, *args):
     """    Used to give advice on confessions if needed. Use this to give advice or start a chain."""
@@ -868,6 +887,7 @@ async def support(ctx, *args):
     embed.add_field(name="Advice", value=(" ".join(args)))
     await ctx.channel.send(embed=embed)
 
+
 @bot.command()
 async def testembed(ctx, *, user: discord.Member = None):
     await ctx.send('testing embeds')
@@ -876,6 +896,7 @@ async def testembed(ctx, *, user: discord.Member = None):
     embed.add_field(name="title", value="testy lol", inline=False)
     embed.add_field(name="title 2", value="more testy testing??", inline=False)
     await ctx.channel.send(embed=embed)
+
 
 @bot.command()
 async def o(ctx):
@@ -942,19 +963,26 @@ async def lnh(ctx):
         'please ignore this.'
     )
 
+
 @lnh.command()
 async def invite(ctx):
     """Legacy Nintendo Homebrew server invite"""
     await ctx.send('discord.gg/XQnNR9N')
+
+
 @lnh.command()
 async def link(ctx):
     """How to copy links for idiots"""
     await ctx.send(
         'https://cdn.discordapp.com/attachments/546727695547891712/822805639990083637/2021-03-20_12-15-19.mp4')
+
+
 @lnh.command()
 async def aches(ctx):
     """Toxicity of the Gaming Community - Aches is Gone | Bloody Blogs"""
     await ctx.send('https://bloodythorn.github.io/2021/02/28/toxicity-of-the-gaming-community.html')
+
+
 @lnh.command()
 async def nkit(ctx):
     """Nkit Tools link"""
@@ -974,6 +1002,7 @@ async def ecdp(ctx):
     )
     embed.add_field(name="Current Guides", value="```o.ecdp foodsafety\no.ecdp fries\no.ecdp hashbrowns```")
     await ctx.send(embed=embed)
+
 
 @ecdp.command()
 async def foodsafety(ctx):
@@ -998,6 +1027,8 @@ async def foodsafety(ctx):
               "Secondary Pollution\n\nAll display items\n\n\nContact me when late"
     )
     await ctx.send(embed=embed)
+
+
 @ecdp.command()
 async def fries(ctx):
     embed = discord.Embed(color=0x7289DA)
@@ -1022,6 +1053,8 @@ async def fries(ctx):
               "Nutrients `(3 Chars)`\n\nPotato Freezer\n\n168°C"
     )
     await ctx.send(embed=embed)
+
+
 @ecdp.command()
 async def hashbrowns(ctx):
     embed = discord.Embed(color=0x7289DA)
