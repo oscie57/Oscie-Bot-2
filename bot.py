@@ -36,10 +36,10 @@ slash = SlashCommand(bot)
 
 @bot.event  # When the bot starts up
 async def on_ready():
-    currentDT = datetime.datetime.now()
+    current_dt = datetime.datetime.now()
     print('-----------------------------------------------')
     print(f'Logged in as {bot.user.name} ({bot.user.id})')
-    print(f'Log started at: {currentDT}')
+    print(f'Log started at: {current_dt}')
     print('-----------------------------------------------')
     print('To avoid most errors, make sure the bot has')
     print('the required permissions in all Guilds')
@@ -56,14 +56,14 @@ async def on_ready():
 
 @bot.event  # When an invite is created
 async def on_invite_create(invite):
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {invite.guild} | Invite created - {invite.code}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {invite.guild} | Invite created - {invite.code}')
 
 
 @bot.event  # When an invite is deleted
 async def on_invite_delete(invite):
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {invite.guild} | Invite deleted - {invite.code}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {invite.guild} | Invite deleted - {invite.code}')
 
 
 # Error responses
@@ -71,16 +71,16 @@ async def on_invite_delete(invite):
 
 @bot.event  # When there is a discordpy error (not all)
 async def on_command_error(ctx, error):
-    currentDT = datetime.datetime.now()
+    current_dt = datetime.datetime.now()
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('Please pass in all required arguments')
-        print(f'({currentDT}) {ctx.guild} | Error: MissingRequiredArgument')
+        print(f'({current_dt}) {ctx.guild} | Error: MissingRequiredArgument')
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('Invalid command. Use `o.help` for valid commands.')
-        print(f'({currentDT}) {ctx.guild} | Error: CommandNotFound')
+        print(f'({current_dt}) {ctx.guild} | Error: CommandNotFound')
     if isinstance(error, commands.MissingPermissions):
         await ctx.send('You do not have permission to use this command.')
-        print(f'({currentDT}) {ctx.guild} | Error: MissingPermissions')
+        print(f'({current_dt}) {ctx.guild} | Error: MissingPermissions')
 
 
 # Personal check
@@ -110,8 +110,8 @@ async def idle(ctx):
         activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"),
         status=discord.Status.idle
     )
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | Status Changed - Idle')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | Status Changed - Idle')
 
 
 @status.command()
@@ -122,8 +122,8 @@ async def online(ctx):
         activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"),
         status=discord.Status.online
     )
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | Status Changed - Online')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | Status Changed - Online')
 
 
 @status.command()
@@ -133,8 +133,8 @@ async def dnd(ctx):
     await bot.change_presence(
         activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.dnd
     )
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | Status Changed - Do not Disturb')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | Status Changed - Do not Disturb')
 
 
 @status.command()
@@ -142,8 +142,8 @@ async def dnd(ctx):
 async def invisible(ctx):
     """Sets bot status to Invisible"""
     await bot.change_presence(activity=discord.Game('Brrrrrrr ● o.help'), status=discord.Status.invisible)
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | Status Changed - Invisible')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | Status Changed - Invisible')
 
 
 # Bot Info Commands
@@ -153,8 +153,8 @@ async def _test(ctx: SlashContext):
     embed = discord.Embed(color=0x7289DA, title="embed slash", title_url="https://oscie.tk/")
     embed.add_field(name="lol name", value="pfft", inline=False)
 
-@bot.command()
-async def help(ctx):
+@bot.command(name='help')
+async def general_help(ctx):
     """Testing"""
     await ctx.send('Coming Soon!')
     embed1 = discord.Embed(color=0x7289DA)
@@ -189,11 +189,11 @@ async def info(ctx):
 @info.command()
 async def invite(ctx):
     """Gives the bot invite information"""
-    currentDT = datetime.datetime.now()
+    current_dt = datetime.datetime.now()
     permission = 8
-    inviteLink = f'https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=bot&permissions={permission}'
-    print(f'({currentDT}) {ctx.guild} | Invite Link sent - {ctx.author}')
-    await ctx.send(inviteLink)
+    invite_link = f'https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=bot&permissions={permission}'
+    print(f'({current_dt}) {ctx.guild} | Invite Link sent - {ctx.author}')
+    await ctx.send(invite_link)
 @info.command()
 async def site(ctx):
     """Info for the bot"""
@@ -222,8 +222,8 @@ async def issue(ctx):
 @commands.has_permissions(manage_messages=True)
 async def repeat(ctx, times: int, *args):
     """Repeat a single word to annoy people"""
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | Command "repeat" triggered {times} times - {ctx.author}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | Command "repeat" triggered {times} times - {ctx.author}')
     for i in range(times):
         await ctx.send(" ".join(args))
 
@@ -689,8 +689,8 @@ async def hexrun(ctx):
 @commands.has_permissions(manage_messages=True)
 async def purge(ctx, amount=20):
     """Purge [amount] of messages"""
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | {amount} messages have been deleted - {ctx.author}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | {amount} messages have been deleted - {ctx.author}')
     await ctx.channel.purge(limit=amount)
     await ctx.send(f'{amount} messages just deleted. :+1:')
 
@@ -708,8 +708,8 @@ async def purgeuser(ctx, user: typing.Optional[discord.User], amount: int):
         def check(message):
             return True
 
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | {amount} messages have been deleted - {ctx.author}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | {amount} messages have been deleted - {ctx.author}')
     await ctx.channel.purge(limit=amount, check=check)
     await ctx.send(f'{amount} messages just deleted. :+1:')
 
@@ -720,8 +720,8 @@ async def kick(ctx, member: discord.Member):
     """Kick a specified member"""
     await member.kick()
     await ctx.send(f'{member} was kicked')
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | {member} has been kicked - {ctx.author}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | {member} has been kicked - {ctx.author}')
 
 
 @bot.command()  # Bans a mentioned member
@@ -730,15 +730,15 @@ async def ban(ctx, member: discord.Member):
     """Ban a specified member"""
     await member.ban()
     await ctx.send(f'{member} was banned')
-    currentDT = datetime.datetime.now()
-    print(f'({currentDT}) {ctx.guild} | {member} has just been banned - {ctx.author}')
+    current_dt = datetime.datetime.now()
+    print(f'({current_dt}) {ctx.guild} | {member} has just been banned - {ctx.author}')
 
 
 @bot.command()  # Unbans a tagged member
 @commands.has_permissions(ban_members=True, kick_members=True)
 async def unban(ctx, *, member):
     """Unbans a specified member"""
-    currentDT = datetime.datetime.now()
+    current_dt = datetime.datetime.now()
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
 
@@ -748,7 +748,7 @@ async def unban(ctx, *, member):
         if (user.name, user.discriminator) == (member_name, member_discriminator):
             await ctx.guild.unban(user)
             await ctx.send(f'{user.name}#{user.discriminator} was unbanned')
-            print(f'({currentDT}) {ctx.guild} | {user.name}#{user.discriminator} has been unbanned - {ctx.author}')
+            print(f'({current_dt}) {ctx.guild} | {user.name}#{user.discriminator} has been unbanned - {ctx.author}')
             return
 
 
@@ -757,10 +757,10 @@ async def unban(ctx, *, member):
 async def shutdown(ctx):
     """Shut down the bot"""
     await ctx.send('https://text2image.com/user_images/202102/text2image_J6510767_20210213_81132.png')
-    currentDT = datetime.datetime.now()
+    current_dt = datetime.datetime.now()
     print('-----------------------------------------------')
     print(f'Shutdown triggered - {ctx.guild}')
-    print(f'Log ended at: {currentDT}')
+    print(f'Log ended at: {current_dt}')
     print('-----------------------------------------------')
     await bot.change_presence(activity=discord.Game('Brrrrrrr ● o.help'), status=discord.Status.invisible)
     #await lavalink.close()
@@ -786,7 +786,7 @@ async def shutdown(ctx):
 async def confess(ctx):
     await ctx.channel.purge(limit=1)
 @confess.command()
-async def help(ctx):
+async def bot_help(ctx):
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0xEB6F59)
     # embed.set_author(
@@ -898,8 +898,8 @@ async def ryaltopia(ctx):
 @bot.command(aliases=["clock"])  # Sends the current time
 async def time(ctx):
     """Check the time"""
-    currentDT = datetime.datetime.now()
-    await ctx.send(currentDT)
+    current_dt = datetime.datetime.now()
+    await ctx.send(current_dt)
 
 
 @bot.command()  # Choose between multiple choices
