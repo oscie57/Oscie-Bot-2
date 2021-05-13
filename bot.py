@@ -772,14 +772,14 @@ async def shutdown(ctx):
     print(f'Log ended at: {current_dt}')
     print('-----------------------------------------------')
     await bot.change_presence(activity=discord.Game('Brrrrrrr ● o.help'), status=discord.Status.invisible)
-    #await lavalink.close()
+    # await lavalink.close()
     sys.exit()
 
 
 # Random commands
 
-#@bot.command(aliases=["strangerchat", "support", "secret", "anonymous", "anon", "whisper"])
-#async def confess(ctx, *args):
+# @bot.command(aliases=["strangerchat", "support", "secret", "anonymous", "anon", "whisper"])
+# async def confess(ctx, *args):
 #    await ctx.channel.purge(limit=1)
 #    await ctx.send(" ".join(args))
 
@@ -787,7 +787,7 @@ async def shutdown(ctx):
 # - Urgencies so group in group
 # - response custom colour
 
-#async def say(ctx, *args):
+# async def say(ctx, *args):
 #    await ctx.channel.purge(limit=1)
 #    await ctx.send(" ".join(args))
 
