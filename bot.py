@@ -96,14 +96,20 @@ def is_it_me(ctx):  # Check if it is me
 @bot.group(invoke_without_command=True)
 async def status(ctx):
     """Change the bot status with a subcommand"""
-    await ctx.send('Either you didnt include a subcommand or you used an incorrect one. Please do `o.help status` to see all subcommands.')
+    await ctx.send(
+        'Either you didnt include a subcommand or you used an incorrect one. '
+        'Please do `o.help status` to see all subcommands.'
+    )
 
 
 @status.command(description="Testing Description")
 @commands.check(is_it_me)
 async def idle(ctx):
     """Sets bot status to Idle"""
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.idle)
+    await bot.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"),
+        status=discord.Status.idle
+    )
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Idle')
 
@@ -112,7 +118,10 @@ async def idle(ctx):
 @commands.check(is_it_me)
 async def online(ctx):
     """Sets bot status to Online"""
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.online)
+    await bot.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"),
+        status=discord.Status.online
+    )
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Online')
 
@@ -121,7 +130,9 @@ async def online(ctx):
 @commands.check(is_it_me)
 async def dnd(ctx):
     """Sets bot status to Do not Disturb"""
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.dnd)
+    await bot.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.dnd
+    )
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Do not Disturb')
 
@@ -148,7 +159,12 @@ async def help(ctx):
     await ctx.send('Coming Soon!')
     embed1 = discord.Embed(color=0x7289DA)
     embed1.set_author(name="oscie bot 2 - info", icon_url="https://oscie.tk/assets/logo.png")
-    embed1.add_field(name="Temporary", value="Plans:\n```- Add database\n- Add commands group to said DB\n- Add commands to each group\n- Add commands to cogs```", inline=False)
+    embed1.add_field(
+        name="Temporary",
+        value="Plans:\n```- Add database\n- Add commands group to said DB\n- "
+              "Add commands to each group\n- Add commands to cogs```",
+        inline=False
+    )
     embed1.add_field(name="Urgency", value="**Major**", inline=False)
     embed2 = discord.Embed(color=0x7289DA)
     embed2.set_author(name="oscie bot 2 - commands", icon_url="https://oscie.tk/assets/logo.png")
@@ -194,7 +210,9 @@ async def getupdate(ctx):
 @info.command()
 async def issue(ctx):
     await ctx.send(
-        'Having an issue or want to suggest a command? Report it here!\nhttps://github.com/Oscie57/Oscie-Bot-Issues/issues')
+        'Having an issue or want to suggest a command? Report it here!\n'
+        'https://github.com/Oscie57/Oscie-Bot-Issues/issues'
+    )
 
 
 # Shitpost commands
@@ -225,7 +243,10 @@ async def stickers(ctx):
     """Shows Sticker store pages
     Usage: "o.store stickers [stickerpack]\""""
     await ctx.send(
-        'To find the stickers currently avaliable in this store, type `o.help store stickers`. Please note: These pages will only work if you are in one of these following countries, `Canada`, `Brazil` or `Japan`.')
+        'To find the stickers currently avaliable in this store, type `o.help store stickers`. '
+        'Please note: These pages will only work if you are in one of these following countries, '
+        '`Canada`, `Brazil` or `Japan`.'
+    )
 
 
 @store.group(aliases=["servers"], invoke_without_command=True)
@@ -233,7 +254,10 @@ async def invites(ctx):
     """Shows Game store invites
     Usage: "o.store invites|servers [servername]\""""
     await ctx.send(
-        'These are games that do not have specific (linkable) store pages, so you will have to join the developers server to obtain the game. Use `o.help store invites` to see the applicable games.')
+        'These are games that do not have specific (linkable) store pages, '
+        'so you will have to join the developers server to obtain the game. '
+        'Use `o.help store invites` to see the applicable games.'
+    )
 
 
 @store.group(aliases=["games"], invoke_without_command=True)
@@ -241,7 +265,9 @@ async def sku(ctx):
     """Shows Game store pages (SKU)
     Usage: "o.store sku|games [gamename]\""""
     await ctx.send(
-        'These are games that have store pages that can be directly installed or visited. Most are free, but there are a few paid in the mix. Use `o.help store sku` for a list of games and price.')
+        'These are games that have store pages that can be directly installed or visited. '
+        'Most are free, but there are a few paid in the mix. Use `o.help store sku` for a list of games and price.'
+    )
 
 
 @store.group(invoke_without_command=True)
@@ -257,7 +283,10 @@ async def dlc(ctx):
     """Shows DLC pages (needs Base Game)
     Usage: "o.store dlc [game]\""""
     await ctx.send(
-        'These are store pages that are DLC (downloadable content) that are avaliable for discord games that we have in the other store commands. Use `o.help store dlc` for the list of games with DLC')
+        'These are store pages that are DLC (downloadable content) '
+        'that are avaliable for discord games that we have in the other store commands. '
+        'Use `o.help store dlc` for the list of games with DLC'
+    )
 
 
 @stickers.command()
@@ -353,9 +382,18 @@ async def minionmasters(ctx):
 async def minionmasters(ctx):
     """Minion Masters DLC - `o.store sku minionmasters`"""
     await ctx.send(
-        'https://ptb.discord.com/store/skus/742277397105213440/nightmares\nhttps://canary.discord.com/store/skus/515467071924994048/all-masters\nhttps://canary.discord.com/store/skus/491564667983101953/premium-upgrade\nhttps://canary.discord.com/store/skus/548071645265264650/voidborne-onslaught\nhttps://canary.discord.com/store/skus/639095281668849664/crystal-conquest')
+        'https://ptb.discord.com/store/skus/742277397105213440/nightmares\n'
+        'https://canary.discord.com/store/skus/515467071924994048/all-masters\n'
+        'https://canary.discord.com/store/skus/491564667983101953/premium-upgrade\n'
+        'https://canary.discord.com/store/skus/548071645265264650/voidborne-onslaught\n'
+        'https://canary.discord.com/store/skus/639095281668849664/crystal-conquest'
+    )
     await ctx.send(
-        'https://canary.discord.com/store/skus/565546081975533578/accursed-army-pack\nhttps://canary.discord.com/store/skus/607929247578849283/might-of-the-slither-lords\nhttps://canary.discord.com/store/skus/678878135697145866/zealous-inferno\nhttps://canary.discord.com/store/skus/707885099101847622/charging-into-darkness')
+        'https://canary.discord.com/store/skus/565546081975533578/accursed-army-pack\n'
+        'https://canary.discord.com/store/skus/607929247578849283/might-of-the-slither-lords\n'
+        'https://canary.discord.com/store/skus/678878135697145866/zealous-inferno\n'
+        'https://canary.discord.com/store/skus/707885099101847622/charging-into-darkness'
+    )
 
 
 @sku.command()
@@ -434,7 +472,9 @@ async def realmroyale(ctx):
 async def realmroyale(ctx):
     """Realm Royale DLC - `o.store sku realmroyale`"""
     await ctx.send(
-        'https://canary.discord.com/store/skus/564916655285600266/realm-royale-bass-drop-bundle\nhttps://canary.discord.com/store/skus/595360871472168991/realm-royale-cute-but-deadly-pack')
+        'https://canary.discord.com/store/skus/564916655285600266/realm-royale-bass-drop-bundle\n'
+        'https://canary.discord.com/store/skus/595360871472168991/realm-royale-cute-but-deadly-pack'
+    )
 
 
 @sku.command()
@@ -525,7 +565,12 @@ async def hagwwii(ctx):
 async def hagwwii(ctx):
     """Heroes & Generals WWII DLC - `o.store sku hagwwii`"""
     await ctx.send(
-        'https://ptb.discord.com/store/skus/558205987434266625/1200-gold\nhttps://ptb.discord.com/store/skus/565438968167137280/2200-gold\nhttps://ptb.discord.com/store/skus/557535890285658122/4800-gold\nhttps://ptb.discord.com/store/skus/565441415270629376/13000-gold\nhttps://ptb.discord.com/store/skus/565460799355617289/30000-gold')
+        'https://ptb.discord.com/store/skus/558205987434266625/1200-gold\n'
+        'https://ptb.discord.com/store/skus/565438968167137280/2200-gold\n'
+        'https://ptb.discord.com/store/skus/557535890285658122/4800-gold\n'
+        'https://ptb.discord.com/store/skus/565441415270629376/13000-gold\n'
+        'https://ptb.discord.com/store/skus/565460799355617289/30000-gold'
+    )
 
 
 @sku.command()
@@ -628,7 +673,9 @@ async def hexrun(ctx):
 async def hexrun(ctx):
     """Hex! Run DLC - `o.store sku hexrun`"""
     await ctx.send(
-        'https://ptb.discord.com/store/skus/691033745024614402/hex-run-gold-edition\nhttps://ptb.discord.com/store/skus/691246598532890725/hex-run-through-the-portal')
+        'https://ptb.discord.com/store/skus/691033745024614402/hex-run-gold-edition\n'
+        'https://ptb.discord.com/store/skus/691246598532890725/hex-run-through-the-portal'
+    )
 
 
 # Moderation commands
@@ -742,12 +789,42 @@ async def confess(ctx):
 async def help(ctx):
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0xEB6F59)
-    # embed.set_author(name="Confession Help Command", icon_url="https://oscie.tk/assets/logo.png", description="Anonymously confess to something or get advice for something, without anyone seeing your name or profile picture")
+    # embed.set_author(
+    #     name="Confession Help Command",
+    #     icon_url="https://oscie.tk/assets/logo.png",
+    #     description="Anonymously confess to something or get advice for something, "
+    #                 "without anyone seeing your name or profile picture"
+    # )
     embed.set_author(name="Confession Help Command", icon_url="https://oscie.tk/assets/logo.png")
-    embed.add_field(name="Giving Support", value="o.confess support [advice]\n\nThe support command is used to give people advice based on their confession anonymously, no matter the urgency. This exists so if you want to give advice that you dont really feel comfortable giving out normally", inline=False)
-    embed.add_field(name="Getting Support: Neutral", value="o.confess neutral [confession]\n\nThis is a command you can use if you don't feel comfortable confessing something under your name, but want people to know it. This doesnt always have to need advice.", inline=False)
-    embed.add_field(name="Getting Support: Minor", value="o.confess neutral [confession]\n\nThis is a command you can use if you need advice, but not so bad that its more important than the rest. If its something small, use this. If you dont want advice, consider `o.confess neutral`.", inline=False)
-    embed.add_field(name="Getting Support: Urgent", value="o.confess major [confession]\n\nThis is for really important things that you really really need advice on. If you are in danger of any sorts, please contact the right people instead of saying here", inline=False)
+    embed.add_field(
+        name="Giving Support",
+        value="o.confess support [advice]\n\n"
+              "The support command is used to give people advice based on their confession anonymously, "
+              "no matter the urgency. This exists so if you want to give advice that you dont really "
+              "feel comfortable giving out normally",
+        inline=False
+    )
+    embed.add_field(
+        name="Getting Support: Neutral",
+        value="o.confess neutral [confession]\n\n"
+              "This is a command you can use if you don't feel comfortable confessing something under your name, "
+              "but want people to know it. This doesnt always have to need advice.",
+        inline=False
+    )
+    embed.add_field(
+        name="Getting Support: Minor",
+        value="o.confess neutral [confession]\n\n"
+              "This is a command you can use if you need advice, but not so bad that its more important than the rest. "
+              "If its something small, use this. If you dont want advice, consider `o.confess neutral`.",
+        inline=False
+    )
+    embed.add_field(
+        name="Getting Support: Urgent",
+        value="o.confess major [confession]\n\n"
+              "This is for really important things that you really really need advice on. "
+              "If you are in danger of any sorts, please contact the right people instead of saying here",
+        inline=False
+    )
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def major(ctx, *args):
@@ -760,7 +837,10 @@ async def major(ctx, *args):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def minor(ctx, *args):
-    """    A minor confession, that you would like advice on, but not that important. Use this to respond to advice or start a chain."""
+    """A minor confession, that you would like advice on, but not that important.
+
+    Use this to respond to advice or start a chain.
+    """
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0x9CE9FF)
     embed.set_author(name="Anonymous Confession", icon_url="https://oscie.tk/assets/logo.png")
@@ -769,7 +849,10 @@ async def minor(ctx, *args):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def neutral(ctx, *args):
-    """    A neutral confession, that you may or may not want/need advice on. Use this to respond to advice or start a chain."""
+    """A neutral confession, that you may or may not want/need advice on.
+
+    Use this to respond to advice or start a chain.
+    """
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0x8CFFCF)
     embed.set_author(name="Anonymous Confession", icon_url="https://oscie.tk/assets/logo.png")
@@ -854,7 +937,10 @@ async def akisblack(ctx):
 @bot.group(invoke_without_command=True)
 async def lnh(ctx):
     await ctx.send(
-        'These are commands specifically for the Guild: `Legacy Nintendo Homebrew//546723909081235471` If you are seeing this in LNH, use `o.help lnh` to see the Support commands for LNH. If you are not in LNH, please ignore this.')
+        'These are commands specifically for the Guild: `Legacy Nintendo Homebrew//546723909081235471` '
+        'If you are seeing this in LNH, use `o.help lnh` to see the Support commands for LNH. If you are not in LNH, '
+        'please ignore this.'
+    )
 
 @lnh.command()
 async def invite(ctx):
@@ -880,7 +966,12 @@ async def nkit(ctx):
 async def ecdp(ctx):
     embed = discord.Embed(color=0x7289DA)
     embed.set_author(name="ecdp info", icon_url="https://oscie.tk/assets/logo.png")
-    embed.add_field(name="eCDP Information", value="eCDP Discord Invite: https://discord.gg/3MkYyFnkqG\nGame Archive: https://archive.org/details/mcdonalds-japan-ecdp-rom-training-nintendo-ds-cartridge-dump\nSpeedrun Leaderboard: https://www.speedrun.com/mcdonalds_ecdp")
+    embed.add_field(
+        name="eCDP Information",
+        value="eCDP Discord Invite: https://discord.gg/3MkYyFnkqG\n"
+              "Game Archive: https://archive.org/details/mcdonalds-japan-ecdp-rom-training-nintendo-ds-cartridge-dump\n"
+              "Speedrun Leaderboard: https://www.speedrun.com/mcdonalds_ecdp"
+    )
     embed.add_field(name="Current Guides", value="```o.ecdp foodsafety\no.ecdp fries\no.ecdp hashbrowns```")
     await ctx.send(embed=embed)
 
@@ -888,25 +979,72 @@ async def ecdp(ctx):
 async def foodsafety(ctx):
     embed = discord.Embed(color=0x7289DA)
     embed.set_author(name="made by oscie - ecdp guides", icon_url="https://oscie.tk/assets/logo.png")
-    embed.add_field(name="Important!", value="All of these answers are meant to be used with a phone with the camera on Google Translate, as these were taken directly from it. They are not accurate AT ALL but they work flawlessly with a phone like how it was made.\n\n", inline=False)
-    embed.add_field(name="Question Contains\n", value="3 Principles of food poisoning prevention\n\nCentimetres from the floor\n\nWhat temp should frozen products be\n\n10:1 Burger\n\nNot necessary to prevent secondary\n\nWhat temp should refrigerated items be\n\nNot correct hand wash\n\nWhat is cross-contamination\n\nWhat causes food safety compromisation\n\nWhat is not standard measure")
-    embed.add_field(name="Answer Contains\n", value="Do not increase\n\n15cm\n\n-18°C\n\n69°C\n\nCheck Schedule\n\n4°C\n\nRub with arms crossed\n\nSecondary Pollution\n\nAll display items\n\n\nContact me when late")
+    embed.add_field(name="Important!",
+                    value="All of these answers are meant to be used with a phone with the camera on Google Translate, "
+                          "as these were taken directly from it. They are not accurate AT ALL but they work flawlessly "
+                          "with a phone like how it was made.\n\n",
+                    inline=False
+                    )
+    embed.add_field(
+        name="Question Contains\n",
+        value="3 Principles of food poisoning prevention\n\nCentimetres from the floor\n\n"
+              "What temp should frozen products be\n\n10:1 Burger\n\nNot necessary to prevent secondary\n\n"
+              "What temp should refrigerated items be\n\nNot correct hand wash\n\nWhat is cross-contamination\n\n"
+              "What causes food safety compromisation\n\nWhat is not standard measure"
+    )
+    embed.add_field(
+        name="Answer Contains\n",
+        value="Do not increase\n\n15cm\n\n-18°C\n\n69°C\n\nCheck Schedule\n\n4°C\n\nRub with arms crossed\n\n"
+              "Secondary Pollution\n\nAll display items\n\n\nContact me when late"
+    )
     await ctx.send(embed=embed)
 @ecdp.command()
 async def fries(ctx):
     embed = discord.Embed(color=0x7289DA)
     embed.set_author(name="made by oscie - ecdp guides", icon_url="https://oscie.tk/assets/logo.png")
-    embed.add_field(name="Important!", value="All of these answers are meant to be used with a phone with the camera on Google Translate, as these were taken directly from it. They are not accurate AT ALL but they work flawlessly with a phone like how it was made.\n\n", inline=False)
-    embed.add_field(name="Question Contains\n", value="How many seconds do the next baskets\n\nIf potato is on floor, use [] to pick up\n\nWhen sprinkling salt on fries\n\nExpectations for potatoes\n\nUse special gloves, an apron and []\n\nHow many baskets should one bag\n\nHow long does it take to make potato\n\nChoose the six non-enemy oils\n\nWhere to store potato bags\n\nWhat is the temp of the fryer")
-    embed.add_field(name="Answer Contains\n", value="30 Seconds\n\nLarge Tongs\n\nTriple Arch\n\nTexture\n\nFace Shield\n\n4\n\n2:55+5\n\nNutrients `(3 Chars)`\n\nPotato Freezer\n\n168°C")
+    embed.add_field(
+        name="Important!",
+        value="All of these answers are meant to be used with a phone with the camera on Google Translate, "
+              "as these were taken directly from it. They are not accurate AT ALL but they work flawlessly with "
+              "a phone like how it was made.\n\n",
+        inline=False
+    )
+    embed.add_field(
+        name="Question Contains\n",
+        value="How many seconds do the next baskets\n\nIf potato is on floor, use [] to pick up\n\n"
+              "When sprinkling salt on fries\n\nExpectations for potatoes\n\nUse special gloves, an apron and []\n\n"
+              "How many baskets should one bag\n\nHow long does it take to make potato\n\n"
+              "Choose the six non-enemy oils\n\nWhere to store potato bags\n\nWhat is the temp of the fryer"
+    )
+    embed.add_field(
+        name="Answer Contains\n",
+        value="30 Seconds\n\nLarge Tongs\n\nTriple Arch\n\nTexture\n\nFace Shield\n\n4\n\n2:55+5\n\n"
+              "Nutrients `(3 Chars)`\n\nPotato Freezer\n\n168°C"
+    )
     await ctx.send(embed=embed)
 @ecdp.command()
 async def hashbrowns(ctx):
     embed = discord.Embed(color=0x7289DA)
     embed.set_author(name="made by oscie - ecdp guides", icon_url="https://oscie.tk/assets/logo.png")
-    embed.add_field(name="Important!", value="All of these answers are meant to be used with a phone with the camera on Google Translate, as these were taken directly from it. They are not accurate AT ALL but they work flawlessly with a phone like how it was made.\n\n", inline=False)
-    embed.add_field(name="Question Contains\n", value="What do you use for packaging\n\nWhat do customers expect\n\nHow long do hashbrowns go in the fryer\n\nHow long do you drain the oil\n\nWhat temperature is the fryer\n\nWhat is the holding time of hashbrowns\n\nChoose the six non-enemy oils\n\nWhat do you use to clean the station\n\nWhat does it mean to remove the fried\n\nHow many can be placed in the basket")
-    embed.add_field(name="Answer Contains\n", value="Tongs\n\nGolden Brown\n\n2:45+5\n\n5-10s\n\n182°C\n\n10\n\nSkimming\n\nDry Wiper\n\nSkimming\n\n8 Pieces")
+    embed.add_field(
+        name="Important!",
+        value="All of these answers are meant to be used with a phone with the camera on Google Translate, "
+              "as these were taken directly from it. They are not accurate AT ALL but they work flawlessly "
+              "with a phone like how it was made.\n\n",
+        inline=False
+    )
+    embed.add_field(
+        name="Question Contains\n",
+        value="What do you use for packaging\n\nWhat do customers expect\n\nHow long do hashbrowns go in the fryer\n\n"
+              "How long do you drain the oil\n\nWhat temperature is the fryer\n\n"
+              "What is the holding time of hashbrowns\n\nChoose the six non-enemy oils\n\n"
+              "What do you use to clean the station\n\nWhat does it mean to remove the fried\n\n"
+              "How many can be placed in the basket"
+    )
+    embed.add_field(
+        name="Answer Contains\n",
+        value="Tongs\n\nGolden Brown\n\n2:45+5\n\n5-10s\n\n182°C\n\n10\n\nSkimming\n\nDry Wiper\n\nSkimming\n\n8 Pieces"
+    )
     await ctx.send(embed=embed)
     
 
