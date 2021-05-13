@@ -742,11 +742,12 @@ async def confess(ctx):
 async def help(ctx):
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0xEB6F59)
-    embed.set_author(name="Confession Help Command", icon_url="https://oscie.tk/assets/logo.png", description="Anonymously confess to something or get advice for something, without anyone seeing your name or profile picture")
-    embed.add_field(title="Giving Support", value="o.confess support [advice]\n\nThe support command is used to give people advice based on their confession anonymously, no matter the urgency. This exists so if you want to give advice that you dont really feel comfortable giving out normally", inline=False)
-    embed.add_field(title="Getting Support: Neutral", value="o.confess neutral [confession]\n\nThis is a command you can use if you don't feel comfortable confessing something under your name, but want people to know it. This doesnt always have to need advice.", inline=False)
-    embed.add_field(title="Getting Support: Minor", value="o.confess neutral [confession]\n\nThis is a command you can use if you need advice, but not so bad that its more important than the rest. If its something small, use this. If you dont want advice, consider `o.confess neutral`.", inline=False)
-    embed.add_field(title="Getting Support: Urgent", value="o.confess major [confession]\n\nThis is for really important things that you really really need advice on. If you are in danger of any sorts, please contact the right people instead of saying here", inline=False)
+    # embed.set_author(name="Confession Help Command", icon_url="https://oscie.tk/assets/logo.png", description="Anonymously confess to something or get advice for something, without anyone seeing your name or profile picture")
+    embed.set_author(name="Confession Help Command", icon_url="https://oscie.tk/assets/logo.png")
+    embed.add_field(name="Giving Support", value="o.confess support [advice]\n\nThe support command is used to give people advice based on their confession anonymously, no matter the urgency. This exists so if you want to give advice that you dont really feel comfortable giving out normally", inline=False)
+    embed.add_field(name="Getting Support: Neutral", value="o.confess neutral [confession]\n\nThis is a command you can use if you don't feel comfortable confessing something under your name, but want people to know it. This doesnt always have to need advice.", inline=False)
+    embed.add_field(name="Getting Support: Minor", value="o.confess neutral [confession]\n\nThis is a command you can use if you need advice, but not so bad that its more important than the rest. If its something small, use this. If you dont want advice, consider `o.confess neutral`.", inline=False)
+    embed.add_field(name="Getting Support: Urgent", value="o.confess major [confession]\n\nThis is for really important things that you really really need advice on. If you are in danger of any sorts, please contact the right people instead of saying here", inline=False)
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def major(ctx, *args):
