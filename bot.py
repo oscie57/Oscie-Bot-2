@@ -710,7 +710,7 @@ async def purgeuser(ctx, user: typing.Optional[discord.User], amount: int):
     """Purge [amount] of messages"""
     # if amount >= 1000:
     #    return await ctx.send('You can not purge more than 1000 messages!')
-    if user != None:
+    if user is not None:
         def check(message):
             return message.author.id == user.id
     else:
