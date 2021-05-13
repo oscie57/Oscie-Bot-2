@@ -15,23 +15,23 @@ print(sys.path)
 # import lavalink
 # import requests
 
-'''Bot Description'''
+# Bot Description
 
 description = '''An example bot to showcase the discord.ext.commands extension module.
 There are a number of utility commands being showcased here.'''
 
-'''Bot Intents'''
+# Bot Intents
 
 intents = discord.Intents.all()
 # intents.members = True
 
-'''Extra Information'''
+# Extra Information
 
 bot = commands.Bot(case_insensitive=True, command_prefix='o.', description=description, intents=intents)
 bot.remove_command('help')
 slash = SlashCommand(bot)
 
-'''Bot Start - Logging Begins'''
+# Bot Start - Logging Begins
 
 
 @bot.event  # When the bot starts up
@@ -51,7 +51,7 @@ async def on_ready():
     )'''
 
 
-'''Invite updates'''
+# Invite updates
 
 
 @bot.event  # When an invite is created
@@ -66,7 +66,7 @@ async def on_invite_delete(invite):
     print(f'({currentDT}) {invite.guild} | Invite deleted - {invite.code}')
 
 
-'''Error responses'''
+# Error responses
 
 
 @bot.event  # When there is a discordpy error (not all)
@@ -83,14 +83,14 @@ async def on_command_error(ctx, error):
         print(f'({currentDT}) {ctx.guild} | Error: MissingPermissions')
 
 
-'''Personal check'''
+# Personal check
 
 
 def is_it_me(ctx):  # Check if it is me
     return ctx.author.id == 729135459405529118
 
 
-'''Status commands'''
+# Status commands
 
 
 @bot.group(invoke_without_command=True)
@@ -135,7 +135,7 @@ async def invisible(ctx):
     print(f'({currentDT}) {ctx.guild} | Status Changed - Invisible')
 
 
-'''Bot Info Commands'''
+# Bot Info Commands
 
 @slash.slash(name="test")
 async def _test(ctx: SlashContext):
@@ -197,7 +197,7 @@ async def issue(ctx):
         'Having an issue or want to suggest a command? Report it here!\nhttps://github.com/Oscie57/Oscie-Bot-Issues/issues')
 
 
-'''Shitpost commands'''
+# Shitpost commands
 
 
 @bot.command(aliases=["spam"])  # Repeat a message many times (one word)
@@ -210,7 +210,7 @@ async def repeat(ctx, times: int, *args):
         await ctx.send(" ".join(args))
 
 
-'''Store Links'''
+# Store Links
 
 
 @bot.group(aliases=["shop"], invoke_without_command=True)
@@ -631,7 +631,7 @@ async def hexrun(ctx):
         'https://ptb.discord.com/store/skus/691033745024614402/hex-run-gold-edition\nhttps://ptb.discord.com/store/skus/691246598532890725/hex-run-through-the-portal')
 
 
-'''Moderation commands'''
+# Moderation commands
 
 
 # Guild number
@@ -720,7 +720,7 @@ async def shutdown(ctx):
     sys.exit()
 
 
-'''Random commands'''
+# Random commands
 
 #@bot.command(aliases=["strangerchat", "support", "secret", "anonymous", "anon", "whisper"])
 #async def confess(ctx, *args):
@@ -847,7 +847,7 @@ async def akisblack(ctx):
     await ctx.send('https://cdn.discordapp.com/attachments/718663888714989638/802794779871412294/makesweet2.gif')
 
 
-'''Legacy Nintendo Homebrew'''
+# Legacy Nintendo Homebrew'''
 
 
 @bot.group(invoke_without_command=True)
@@ -874,7 +874,7 @@ async def nkit(ctx):
     await ctx.send('https://gbatemp.net/download/nkit.36157/')
 
 
-'''eCDP Commands'''
+# eCDP Commands'''
 @bot.group(invoke_without_command=True)
 async def ecdp(ctx):
     embed = discord.Embed(color=0x7289DA)
@@ -909,16 +909,16 @@ async def hashbrowns(ctx):
     await ctx.send(embed=embed)
     
 
-'''Bot events'''
+# Bot events
 
-'''@bot.event()
-async def on_message(message):
-    if message.channel.type == "private":
-        return message.channel.send('This is a DM. I only work in servers')'''
+# @bot.event()
+# async def on_message(message):
+#     if message.channel.type == "private":
+#         return message.channel.send('This is a DM. I only work in servers')
 
 # Member count command
 
-'''Bot Token'''
+# Bot Token
 
-'''Special Thanks:'''
+# Special Thanks:
 # @Hentai#8349 - Help with Clear command
