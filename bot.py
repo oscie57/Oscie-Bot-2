@@ -1,16 +1,16 @@
-import sys
-
-print('-----------------------------------------------')
-print('Module Path')
-print(sys.path)
-
-import discord
-from discord.ext import commands
-from discord_slash import SlashCommand, SlashContext
 import random
 import datetime
 import sys
 import typing
+
+import discord
+from discord.ext import commands
+from discord_slash import SlashCommand, SlashContext
+
+
+print('-----------------------------------------------')
+print('Module Path')
+print(sys.path)
 
 # import lavalink
 # import requests
