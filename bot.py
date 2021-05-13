@@ -17,8 +17,8 @@ print(sys.path)
 
 # Bot Description
 
-description = '''An example bot to showcase the discord.ext.commands extension module.
-There are a number of utility commands being showcased here.'''
+description = """An example bot to showcase the discord.ext.commands extension module.
+There are a number of utility commands being showcased here."""
 
 # Bot Intents
 
@@ -45,10 +45,10 @@ async def on_ready():
     print('the required permissions in all Guilds')
     print('-----------------------------------------------')
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"))
-    '''lavalink.initialize(
+    """lavalink.initialize(
         bot, host='localhost', password='password',
         rest_port=2332, ws_port=2333
-    )'''
+    )"""
 
 
 # Invite updates
@@ -95,14 +95,14 @@ def is_it_me(ctx):  # Check if it is me
 
 @bot.group(invoke_without_command=True)
 async def status(ctx):
-    '''Change the bot status with a subcommand'''
+    """Change the bot status with a subcommand"""
     await ctx.send('Either you didnt include a subcommand or you used an incorrect one. Please do `o.help status` to see all subcommands.')
 
 
 @status.command(description="Testing Description")
 @commands.check(is_it_me)
 async def idle(ctx):
-    '''Sets bot status to Idle'''
+    """Sets bot status to Idle"""
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.idle)
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Idle')
@@ -111,7 +111,7 @@ async def idle(ctx):
 @status.command()
 @commands.check(is_it_me)
 async def online(ctx):
-    '''Sets bot status to Online'''
+    """Sets bot status to Online"""
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.online)
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Online')
@@ -120,7 +120,7 @@ async def online(ctx):
 @status.command()
 @commands.check(is_it_me)
 async def dnd(ctx):
-    '''Sets bot status to Do not Disturb'''
+    """Sets bot status to Do not Disturb"""
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="the beat"), status=discord.Status.dnd)
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Do not Disturb')
@@ -129,7 +129,7 @@ async def dnd(ctx):
 @status.command()
 @commands.check(is_it_me)
 async def invisible(ctx):
-    '''Sets bot status to Invisible'''
+    """Sets bot status to Invisible"""
     await bot.change_presence(activity=discord.Game('Brrrrrrr ● o.help'), status=discord.Status.invisible)
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Status Changed - Invisible')
@@ -144,7 +144,7 @@ async def _test(ctx: SlashContext):
 
 @bot.command()
 async def help(ctx):
-    '''Testing'''
+    """Testing"""
     await ctx.send('Coming Soon!')
     embed1 = discord.Embed(color=0x7289DA)
     embed1.set_author(name="oscie bot 2 - info", icon_url="https://oscie.tk/assets/logo.png")
@@ -166,13 +166,13 @@ async def help(ctx):
 
 @bot.group(invoke_without_command=True)
 async def info(ctx):
-    '''Bot Information Commands'''
+    """Bot Information Commands"""
     await ctx.send('Please invoke a subcommand or use `o.help info`')
 
 
 @info.command()
 async def invite(ctx):
-    '''Gives the bot invite information'''
+    """Gives the bot invite information"""
     currentDT = datetime.datetime.now()
     permission = 8
     inviteLink = f'https://discord.com/oauth2/authorize?client_id={bot.user.id}&scope=bot&permissions={permission}'
@@ -180,16 +180,16 @@ async def invite(ctx):
     await ctx.send(inviteLink)
 @info.command()
 async def site(ctx):
-    '''Info for the bot'''
+    """Info for the bot"""
     await ctx.send('https://oscie.tk/bot')
 @info.command()
 @commands.check(is_it_me)
 async def test(ctx):
-    '''Testing Command'''
+    """Testing Command"""
 @info.command()
 @commands.check(is_it_me)
 async def getupdate(ctx):
-    '''Get update'''
+    """Get update"""
     await ctx.send('```diff\n+Update DATE - Oscie Bot 2\n-------------------------\n-Thing One\n-Thing Two```')
 @info.command()
 async def issue(ctx):
@@ -203,7 +203,7 @@ async def issue(ctx):
 @bot.command(aliases=["spam"])  # Repeat a message many times (one word)
 @commands.has_permissions(manage_messages=True)
 async def repeat(ctx, times: int, *args):
-    '''Repeat a single word to annoy people'''
+    """Repeat a single word to annoy people"""
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | Command "repeat" triggered {times} times - {ctx.author}')
     for i in range(times):
@@ -215,143 +215,143 @@ async def repeat(ctx, times: int, *args):
 
 @bot.group(aliases=["shop"], invoke_without_command=True)
 async def store(ctx):
-    '''Shows store links'''
+    """Shows store links"""
     await ctx.send('This is the Discord store for free and paid games, and stickers. (More added soon)')
     await ctx.send('For more info, and for subcommands, please run `o.help store`')
 
 
 @store.group(invoke_without_command=True)
 async def stickers(ctx):
-    '''Shows Sticker store pages
-    Usage: "o.store stickers [stickerpack]"'''
+    """Shows Sticker store pages
+    Usage: "o.store stickers [stickerpack]\""""
     await ctx.send(
         'To find the stickers currently avaliable in this store, type `o.help store stickers`. Please note: These pages will only work if you are in one of these following countries, `Canada`, `Brazil` or `Japan`.')
 
 
 @store.group(aliases=["servers"], invoke_without_command=True)
 async def invites(ctx):
-    '''Shows Game store invites
-    Usage: "o.store invites|servers [servername]"'''
+    """Shows Game store invites
+    Usage: "o.store invites|servers [servername]\""""
     await ctx.send(
         'These are games that do not have specific (linkable) store pages, so you will have to join the developers server to obtain the game. Use `o.help store invites` to see the applicable games.')
 
 
 @store.group(aliases=["games"], invoke_without_command=True)
 async def sku(ctx):
-    '''Shows Game store pages (SKU)
-    Usage: "o.store sku|games [gamename]"'''
+    """Shows Game store pages (SKU)
+    Usage: "o.store sku|games [gamename]\""""
     await ctx.send(
         'These are games that have store pages that can be directly installed or visited. Most are free, but there are a few paid in the mix. Use `o.help store sku` for a list of games and price.')
 
 
 @store.group(invoke_without_command=True)
 async def extras(ctx):
-    '''Shows extra store pages
-    Usage: "o.store extras [extra]"'''
+    """Shows extra store pages
+    Usage: "o.store extras [extra]\""""
     await ctx.send(
         'These are store pages that are either for jokes or do nothing. Use `o.help store extras` for a full list')
 
 
 @store.group(invoke_without_command=True)
 async def dlc(ctx):
-    '''Shows DLC pages (needs Base Game)
-    Usage: "o.store dlc [game]"'''
+    """Shows DLC pages (needs Base Game)
+    Usage: "o.store dlc [game]\""""
     await ctx.send(
         'These are store pages that are DLC (downloadable content) that are avaliable for discord games that we have in the other store commands. Use `o.help store dlc` for the list of games with DLC')
 
 
 @stickers.command()
 async def whatsupwumpus(ctx):
-    '''What's Up Wumpus - £2.99'''
+    """What's Up Wumpus - £2.99"""
     await ctx.send('https://ptb.discord.com/store/skus/748286108348973106/what-s-up-wumpus-sticker-pack')
 
 
 @stickers.command()
 async def hellowumpus(ctx):
-    '''Hello Wumpus - Free'''
+    """Hello Wumpus - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/749043407997108384/hello-wumpus-sticker-pack')
 
 
 @invites.command()
 async def patchquest(ctx):
-    '''Patch Quest server invite'''
+    """Patch Quest server invite"""
     await ctx.send('Patch Quest (Public Beta) - Free')
     await ctx.send('https://discord.com/invite/pyF5jmP')
 
 
 @invites.command()
 async def cookiedragon(ctx):
-    '''Two Kinds Online server invite'''
+    """Two Kinds Online server invite"""
     await ctx.send('Two Kinds Online (Alpha) - Free')
     await ctx.send('https://discord.gg/cookiedragon')
 
 
 @invites.command()
 async def cycle28(ctx):
-    '''Cycle 28 Invite'''
+    """Cycle 28 Invite"""
     await ctx.send('Cycle 28 - £0.99 (-50%)')
     await ctx.send('https://discord.gg/FpD4SuYeCm')
 
 
 @invites.command()
 async def staysafe(ctx):
-    '''Yellowcake Games Invite'''
+    """Yellowcake Games Invite"""
     await ctx.send('Stay Safe - £2.99')
     await ctx.send('https://discord.gg/yellowcakegames')
 
 
 @invites.command()
 async def hexrunpro(ctx):
-    '''Hex! Run Pro Invite'''
+    """Hex! Run Pro Invite"""
     await ctx.send('Hex! Run Pro - £19.99')
     await ctx.send('https://discord.gg/S9yAhrJrDg')
 
 
 @extras.command()
 async def poggers(ctx):
-    '''Poggers'''
+    """Poggers"""
     await ctx.send('https://canary.discord.com/store/skus/692146322924372089/poggers')
 
 
 @extras.command()
 async def yoshi(ctx):
-    '''Yoshi game'''
+    """Yoshi game"""
     await ctx.send('https://ptb.discord.com/store/skus/710797635388178462/yoshi')
 
 
 @extras.command()
 async def wiilink24(ctx):
-    '''Installing WiiLink24'''
+    """Installing WiiLink24"""
     await ctx.send('https://ptb.discord.com/store/skus/806878609302093866/installing-wiilink24')
 
 
 @extras.command()
 async def nitro(ctx):
-    '''Discord Nitro Classic'''
+    """Discord Nitro Classic"""
     await ctx.send('https://ptb.discord.com/store/skus/715629060331405382/nitro-classic')
 
 
 @extras.command()
 async def bge(ctx):
-    '''Best Game Ever'''
+    """Best Game Ever"""
     await ctx.send('https://ptb.discord.com/store/skus/461618159171141643/best-game-ever')
 
 
 @sku.command()
 async def koth(ctx):
-    '''King of the Hat - £14.99'''
+    """King of the Hat - £14.99"""
     await ctx.send('https://ptb.discord.com/store/skus/486981988109254667/king-of-the-hat')
 
 
 @sku.command()
 async def minionmasters(ctx):
-    '''Minion Masters - Free (DLC)'''
+    """Minion Masters - Free (DLC)"""
     await ctx.send('https://ptb.discord.com/store/skus/488607666231443456/minion-masters')
 
 
 @dlc.command()
 async def minionmasters(ctx):
-    '''Minion Masters DLC - `o.store sku minionmasters`'''
+    """Minion Masters DLC - `o.store sku minionmasters`"""
     await ctx.send(
         'https://ptb.discord.com/store/skus/742277397105213440/nightmares\nhttps://canary.discord.com/store/skus/515467071924994048/all-masters\nhttps://canary.discord.com/store/skus/491564667983101953/premium-upgrade\nhttps://canary.discord.com/store/skus/548071645265264650/voidborne-onslaught\nhttps://canary.discord.com/store/skus/639095281668849664/crystal-conquest')
     await ctx.send(
@@ -360,273 +360,273 @@ async def minionmasters(ctx):
 
 @sku.command()
 async def cdreboot(ctx):
-    '''Cerpe Diem: Reboot - £4.99'''
+    """Cerpe Diem: Reboot - £4.99"""
     await ctx.send('https://canary.discord.com/store/skus/568922402390671360/carpe-diem-reboot')
 
 
 @sku.command()
 async def forsakenr(ctx):
-    '''Forsaken Remastered - £16.98'''
+    """Forsaken Remastered - £16.98"""
     await ctx.send('https://ptb.discord.com/store/skus/494870847777931268/forsaken-remastered')
 
 
 @sku.command()
 async def forager(ctx):
-    '''Forager - £14.99'''
+    """Forager - £14.99"""
     await ctx.send('https://ptb.discord.com/store/skus/530541618504269875/forager')
 
 
 @sku.command()
 async def staysafe(ctx):
-    '''Stay Safe - £2.99'''
+    """Stay Safe - £2.99"""
     await ctx.send('https://ptb.discord.com/store/skus/431807599860514817/stay-safe')
 
 
 @sku.command()
 async def steelseraph(ctx):
-    '''Steel Seraph - £1.99 (-33%)'''
+    """Steel Seraph - £1.99 (-33%)"""
     await ctx.send('https://ptb.discord.com/store/skus/555820631007035413/steel-seraph')
 
 
 @sku.command()
 async def tanglewood(ctx):
-    '''TANGLEWOOD® - £7.99 (-43%)'''
+    """TANGLEWOOD® - £7.99 (-43%)"""
     await ctx.send('https://ptb.discord.com/store/skus/378315252749565952/tanglewood-r')
 
 
 @sku.command()
 async def temtem(ctx):
-    '''Temtem - £30.99'''
+    """Temtem - £30.99"""
     await ctx.send('https://ptb.discord.com/store/skus/558547388583772201/temtem')
 
 
 @sku.command()
 async def thevagrant(ctx):
-    '''The Vagrant - £1.99 (-50%)'''
+    """The Vagrant - £1.99 (-50%)"""
     await ctx.send('https://ptb.discord.com/store/skus/562121024993230868/the-vagrant')
 
 
 @sku.command()
 async def underonewing(ctx):
-    '''Under One Wing - £28.99'''
+    """Under One Wing - £28.99"""
     await ctx.send('https://ptb.discord.com/store/skus/555856535327342592/under-one-wing')
 
 
 @sku.command()
 async def newtontree(ctx):
-    '''Newton and the Apple Tree - £38.99'''
+    """Newton and the Apple Tree - £38.99"""
     await ctx.send('https://ptb.discord.com/store/skus/555867662442430483/newton-and-the-apple-tree')
 
 
 @sku.command()
 async def zombsroyaleio(ctx):
-    '''ZombsRoyale.io - Free'''
+    """ZombsRoyale.io - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/519338998791929866/zombsroyale-io')
 
 
 @sku.command()
 async def realmroyale(ctx):
-    '''Realm Royale - Free (DLC)'''
+    """Realm Royale - Free (DLC)"""
     await ctx.send('https://ptb.discord.com/store/skus/518088627234930688/realm-royale')
 
 
 @dlc.command()
 async def realmroyale(ctx):
-    '''Realm Royale DLC - `o.store sku realmroyale`'''
+    """Realm Royale DLC - `o.store sku realmroyale`"""
     await ctx.send(
         'https://canary.discord.com/store/skus/564916655285600266/realm-royale-bass-drop-bundle\nhttps://canary.discord.com/store/skus/595360871472168991/realm-royale-cute-but-deadly-pack')
 
 
 @sku.command()
 async def paladins(ctx):
-    '''Paladins - Free'''
+    """Paladins - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/528145079819436043/paladins')
 
 
 @sku.command()
 async def heartwoods(ctx):
-    '''Heart of the Woods - £10.25 (-32%)'''
+    """Heart of the Woods - £10.25 (-32%)"""
     await ctx.send('https://ptb.discord.com/store/skus/555830991168733204/heart-of-the-woods')
 
 
 @sku.command()
 async def amagicalgirl(ctx):
-    '''A Magical High School Girl - £4.67 (-53%)'''
+    """A Magical High School Girl - £4.67 (-53%)"""
     await ctx.send('https://ptb.discord.com/store/skus/555812072969994260/a-magical-high-school-girl')
 
 
 @sku.command()
 async def warframe(ctx):
-    '''Warframe - Free'''
+    """Warframe - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/494959992483348480/warframe')
 
 
 @sku.command()
 async def pickcrafter(ctx):
-    '''Pickcrafter - Free'''
+    """Pickcrafter - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/560643262424285194/pickcrafter')
 
 
 @sku.command()
 async def assitd(ctx):
-    '''AT SUNDOWN: Shots in the Dark - £11.24'''
+    """AT SUNDOWN: Shots in the Dark - £11.24"""
     await ctx.send('https://ptb.discord.com/store/skus/487031053454802946/at-sundown-shots-in-the-dark')
 
 
 @sku.command()
 async def madmachines(ctx):
-    '''MAD MACHINES - £9.99'''
+    """MAD MACHINES - £9.99"""
     await ctx.send('https://ptb.discord.com/store/skus/487272772393762826/mad-machines')
 
 
 @sku.command()
 async def avoidplus(ctx):
-    '''Avoid Premium - £5.99'''
+    """Avoid Premium - £5.99"""
     await ctx.send('https://ptb.discord.com/store/skus/586603437299597333/avoid-premium')
 
 
 @sku.command()
 async def scpsl(ctx):
-    '''SCP: Secret Laboratory - Free'''
+    """SCP: Secret Laboratory - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/420676877766623232/scp-secret-laboratory')
 
 
 @sku.command()
 async def sandboxes(ctx):
-    '''SandBoxes - Free'''
+    """SandBoxes - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/519249930611589141/sandboxes')
 
 
 @sku.command()
 async def forestir(ctx):
-    '''Forestir - Free'''
+    """Forestir - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/554072621000556584/forestir')
 
 
 @sku.command()
 async def ihbad(ctx):
-    '''Its Hard Being A Dog - Free'''
+    """Its Hard Being A Dog - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/565994833953554432/it-s-hard-being-a-dog')
 
 
 @sku.command()
 async def avoid(ctx):
-    '''Avoid - Free'''
+    """Avoid - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/601864041731719189/avoid')
 
 
 @sku.command()
 async def hagwwii(ctx):
-    '''Heroes & Generals WWII - Free'''
+    """Heroes & Generals WWII - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/550277544025522176/heroes-generals-wwii')
 
 
 @dlc.command()
 async def hagwwii(ctx):
-    '''Heroes & Generals WWII DLC - `o.store sku hagwwii`'''
+    """Heroes & Generals WWII DLC - `o.store sku hagwwii`"""
     await ctx.send(
         'https://ptb.discord.com/store/skus/558205987434266625/1200-gold\nhttps://ptb.discord.com/store/skus/565438968167137280/2200-gold\nhttps://ptb.discord.com/store/skus/557535890285658122/4800-gold\nhttps://ptb.discord.com/store/skus/565441415270629376/13000-gold\nhttps://ptb.discord.com/store/skus/565460799355617289/30000-gold')
 
 
 @sku.command()
 async def soma(ctx):
-    '''SOMA - £28.99'''
+    """SOMA - £28.99"""
     await ctx.send('https://ptb.discord.com/store/skus/489230107093893120/soma')
 
 
 @sku.command()
 async def bannersaga(ctx):
-    '''Banner Saga 3 - £23.99'''
+    """Banner Saga 3 - £23.99"""
     await ctx.send('https://ptb.discord.com/store/skus/472483394085715979/banner-saga-3')
 
 
 @sku.command()
 async def starsonata(ctx):
-    '''Star Sonata 2 - Free'''
+    """Star Sonata 2 - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/459415040227803141/star-sonata-2')
 
 
 @sku.command()
 async def taopepel(ctx):
-    '''The Adventures of PepeL - Free'''
+    """The Adventures of PepeL - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/554072366213234729/the-adventures-of-pepel')
 
 
 @sku.command()
 async def jumplats(ctx):
-    '''Jumplats - Free'''
+    """Jumplats - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/618864578545319956/jumplats')
 
 
 @sku.command()
 async def lftb(ctx):
-    '''Light From The Butt - Free'''
+    """Light From The Butt - Free"""
     await ctx.send('https://ptb.discord.com/store/skus/594073512906588179/light-from-the-butt')
 
 
 @sku.command()
 async def metald(ctx):
-    '''Metal's Dungeon - £1.99'''
+    """Metal's Dungeon - £1.99"""
     await ctx.send('https://ptb.discord.com/store/skus/557494559257526272/metal-s-dungeon')
 
 
 @sku.command()
 async def mofanima(ctx):
-    '''Masters of Anima - £19.98'''
+    """Masters of Anima - £19.98"""
     await ctx.send('https://ptb.discord.com/store/skus/492418279717994505/masters-of-anima')
 
 
 @sku.command()
 async def parkasaurus(ctx):
-    '''Parkasaurus - £19.99'''
+    """Parkasaurus - £19.99"""
     await ctx.send('https://ptb.discord.com/store/skus/508008071411400724/parkasaurus')
 
 
 @sku.command()
 async def sinnersfr(ctx):
-    '''Sinner: Sacrifice for Redemption - £18.99'''
+    """Sinner: Sacrifice for Redemption - £18.99"""
     await ctx.send('https://ptb.discord.com/store/skus/489184797936058380/sinner-sacrifice-for-redemption')
 
 
 @sku.command()
 async def subnautica(ctx):
-    '''Subnautica - £24.99'''
+    """Subnautica - £24.99"""
     await ctx.send('https://ptb.discord.com/store/skus/489926636943441932/subnautica')
 
 
 @sku.command()
 async def poe2df(ctx):
-    '''Pillars of Eternity II: Deadfire - £48.99'''
+    """Pillars of Eternity II: Deadfire - £48.99"""
     await ctx.send('https://ptb.discord.com/store/skus/466696214818193408/pillars-of-eternity-ii-deadfire')
 
 
 @sku.command()
 async def subnautica2(ctx):
-    '''Subnautica: Below Zero - £24.99'''
+    """Subnautica: Below Zero - £24.99"""
     await ctx.send('https://ptb.discord.com/store/skus/535869836748783616/subnautica-below-zero')
 
 
 @sku.command()
 async def callofc(ctx):
-    '''Call of Cthulu - £39.99'''
+    """Call of Cthulu - £39.99"""
     await ctx.send('https://ptb.discord.com/store/skus/503982482664849408/call-of-cthulhu-r')
 
 
 @sku.command()
 async def amnesiatdd(ctx):
-    '''Amnesia: The Dark Descent - £19.99'''
+    """Amnesia: The Dark Descent - £19.99"""
     await ctx.send('https://ptb.discord.com/store/skus/489229235509002261/amnesia-the-dark-descent')
 
 
 @sku.command()
 async def hexrun(ctx):
-    '''Hex! Run - £0.99 (-50%)'''
+    """Hex! Run - £0.99 (-50%)"""
     await ctx.send('https://ptb.discord.com/store/skus/598419143661846528/hex-run')
 
 
 @dlc.command()
 async def hexrun(ctx):
-    '''Hex! Run DLC - `o.store sku hexrun`'''
+    """Hex! Run DLC - `o.store sku hexrun`"""
     await ctx.send(
         'https://ptb.discord.com/store/skus/691033745024614402/hex-run-gold-edition\nhttps://ptb.discord.com/store/skus/691246598532890725/hex-run-through-the-portal')
 
@@ -641,7 +641,7 @@ async def hexrun(ctx):
 @bot.command(aliases=["clear", "midou", "delete"])  # Bulk deletes messages
 @commands.has_permissions(manage_messages=True)
 async def purge(ctx, amount=20):
-    '''Purge [amount] of messages'''
+    """Purge [amount] of messages"""
     currentDT = datetime.datetime.now()
     print(f'({currentDT}) {ctx.guild} | {amount} messages have been deleted - {ctx.author}')
     await ctx.channel.purge(limit=amount)
@@ -651,7 +651,7 @@ async def purge(ctx, amount=20):
 @bot.command(aliases=["clearuser"])  # Bulk deletes messages
 @commands.has_permissions(manage_messages=True)
 async def purgeuser(ctx, user: typing.Optional[discord.User], amount: int):
-    '''Purge [amount] of messages'''
+    """Purge [amount] of messages"""
     # if amount >= 1000:
     #    return await ctx.send('You can not purge more than 1000 messages!')
     if user != None:
@@ -670,7 +670,7 @@ async def purgeuser(ctx, user: typing.Optional[discord.User], amount: int):
 @bot.command()  # Kicks a mentioned member
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member):
-    '''Kick a specified member'''
+    """Kick a specified member"""
     await member.kick()
     await ctx.send(f'{member} was kicked')
     currentDT = datetime.datetime.now()
@@ -680,7 +680,7 @@ async def kick(ctx, member: discord.Member):
 @bot.command()  # Bans a mentioned member
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member):
-    '''Ban a specified member'''
+    """Ban a specified member"""
     await member.ban()
     await ctx.send(f'{member} was banned')
     currentDT = datetime.datetime.now()
@@ -690,7 +690,7 @@ async def ban(ctx, member: discord.Member):
 @bot.command()  # Unbans a tagged member
 @commands.has_permissions(ban_members=True, kick_members=True)
 async def unban(ctx, *, member):
-    '''Unbans a specified member'''
+    """Unbans a specified member"""
     currentDT = datetime.datetime.now()
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
@@ -708,7 +708,7 @@ async def unban(ctx, *, member):
 @bot.command(aliases=["poweroff", "off", "powerdown"])  # Shuts down the bot
 @commands.check(is_it_me)
 async def shutdown(ctx):
-    '''Shut down the bot'''
+    """Shut down the bot"""
     await ctx.send('https://text2image.com/user_images/202102/text2image_J6510767_20210213_81132.png')
     currentDT = datetime.datetime.now()
     print('-----------------------------------------------')
@@ -750,7 +750,7 @@ async def help(ctx):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def major(ctx, *args):
-    '''    A major confession, that you really need advice on. Use this to respond to advice or start a chain.'''
+    """    A major confession, that you really need advice on. Use this to respond to advice or start a chain."""
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0xEB6F59)
     embed.set_author(name="Anonymous Confession", icon_url="https://oscie.tk/assets/logo.png")
@@ -759,7 +759,7 @@ async def major(ctx, *args):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def minor(ctx, *args):
-    '''    A minor confession, that you would like advice on, but not that important. Use this to respond to advice or start a chain.'''
+    """    A minor confession, that you would like advice on, but not that important. Use this to respond to advice or start a chain."""
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0x9CE9FF)
     embed.set_author(name="Anonymous Confession", icon_url="https://oscie.tk/assets/logo.png")
@@ -768,7 +768,7 @@ async def minor(ctx, *args):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def neutral(ctx, *args):
-    '''    A neutral confession, that you may or may not want/need advice on. Use this to respond to advice or start a chain.'''
+    """    A neutral confession, that you may or may not want/need advice on. Use this to respond to advice or start a chain."""
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0x8CFFCF)
     embed.set_author(name="Anonymous Confession", icon_url="https://oscie.tk/assets/logo.png")
@@ -777,7 +777,7 @@ async def neutral(ctx, *args):
     await ctx.channel.send(embed=embed)
 @confess.command()
 async def support(ctx, *args):
-    '''    Used to give advice on confessions if needed. Use this to give advice or start a chain.'''
+    """    Used to give advice on confessions if needed. Use this to give advice or start a chain."""
     await ctx.channel.purge(limit=1)
     embed = discord.Embed(color=0xFF00D4)
     embed.set_author(name="Anonymous Advice", icon_url="https://oscie.tk/assets/logo.png")
@@ -795,32 +795,32 @@ async def testembed(ctx, *, user: discord.Member = None):
 
 @bot.command()
 async def o(ctx):
-    '''o.o'''
+    """o.o"""
     await ctx.send('o.o')
 
 
 @bot.command()  # Adds the 2 numbers
 async def add(ctx, left: int, right: int):
-    '''Add 2 numbers together'''
+    """Add 2 numbers together"""
     await ctx.send(left + right)
 
 
 @bot.command(aliases=["ryal"])  # Sends Ryaltopia mod link
 async def ryaltopia(ctx):
-    '''Ryaltopia mod'''
+    """Ryaltopia mod"""
     await ctx.send('https://oscie.tk/ryaltopia')
 
 
 @bot.command(aliases=["clock"])  # Sends the current time
 async def time(ctx):
-    '''Check the time'''
+    """Check the time"""
     currentDT = datetime.datetime.now()
     await ctx.send(currentDT)
 
 
 @bot.command()  # Choose between multiple choices
 async def choose(ctx, *choices: str):
-    '''Chose between any amount of choices'''
+    """Chose between any amount of choices"""
     await ctx.send(random.choice(choices))
 
 
@@ -842,12 +842,12 @@ async def trash(ctx):
 
 @bot.command(aliases=["akis", "akiswhite", "aches", "akis19", "akis_19"])
 async def akisblack(ctx):
-    '''Me when akisblack'''
+    """Me when akisblack"""
     await ctx.send('<@457110625110327296>')
     await ctx.send('https://cdn.discordapp.com/attachments/718663888714989638/802794779871412294/makesweet2.gif')
 
 
-# Legacy Nintendo Homebrew'''
+# Legacy Nintendo Homebrew"""
 
 
 @bot.group(invoke_without_command=True)
@@ -857,24 +857,24 @@ async def lnh(ctx):
 
 @lnh.command()
 async def invite(ctx):
-    '''Legacy Nintendo Homebrew server invite'''
+    """Legacy Nintendo Homebrew server invite"""
     await ctx.send('discord.gg/XQnNR9N')
 @lnh.command()
 async def link(ctx):
-    '''How to copy links for idiots'''
+    """How to copy links for idiots"""
     await ctx.send(
         'https://cdn.discordapp.com/attachments/546727695547891712/822805639990083637/2021-03-20_12-15-19.mp4')
 @lnh.command()
 async def aches(ctx):
-    '''Toxicity of the Gaming Community - Aches is Gone | Bloody Blogs'''
+    """Toxicity of the Gaming Community - Aches is Gone | Bloody Blogs"""
     await ctx.send('https://bloodythorn.github.io/2021/02/28/toxicity-of-the-gaming-community.html')
 @lnh.command()
 async def nkit(ctx):
-    '''Nkit Tools link'''
+    """Nkit Tools link"""
     await ctx.send('https://gbatemp.net/download/nkit.36157/')
 
 
-# eCDP Commands'''
+# eCDP Commands"""
 @bot.group(invoke_without_command=True)
 async def ecdp(ctx):
     embed = discord.Embed(color=0x7289DA)
