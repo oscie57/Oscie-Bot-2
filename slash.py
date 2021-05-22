@@ -118,7 +118,6 @@ async def _streams(ctx: SlashContext, title: str, desc: str, link: str, number: 
     embed.add_field(name="VOD Link", value=f"[Click here to go to VOD!]({link})", inline=False)
     await ctx.send(f"<@&822160446545985556> Stream Archive #{number}", embed=embed)
 #ecdpguides
-#confess
 #projects
 #repeat
 #add
