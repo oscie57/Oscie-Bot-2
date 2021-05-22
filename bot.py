@@ -1091,6 +1091,9 @@ async def hashbrowns(ctx):
 # Member count command
 
 # Bot Token
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
+bot.run(os.getenv("DISCORD_TOKEN"))
 # Special Thanks:
 # @Hentai#8349 - Help with Clear command
